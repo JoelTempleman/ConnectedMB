@@ -1,0 +1,7 @@
+# Put your custom commands here that should be executed once
+# the system init finished. By default this file does nothing.
+# for influxdb sending - change csv dir to to /tmp
+# /runfiles/./start.sh & echo "started" & /runfiles/./runtimerSTI.sh  & echo "Started speedtest"
+# for rsync  - change csv dir to /csv
+sudo -H -u root /runfiles/./rsyncstart.sh & echo "started" &  sudo -H -u root /runfiles/./runtimerstrsync.sh & echo "s
+tarted speedtest"

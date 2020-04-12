@@ -1,0 +1,6 @@
+@reboot  sleep 300 &&/bin/bash /home/connectin/migration_backup/load_database.sh  >> /var/log/cron.log 2>&1
+@reboot  sleep 3600 && /bin/bash /home/connectin/migration_backup/db_backup.sh  >> /var/log/cron.log 2>&1
+30 20 * * * /bin/bash /home/connectin/migration_backup/load_database.sh  >> /var/log/cron.log 2>&1
+30 21 * * * /bin/bash /home/connectin/migration_backup/db_backup.sh  >> /var/log/cron.log 2>&1
+
+

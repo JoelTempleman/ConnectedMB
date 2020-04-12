@@ -1,0 +1,138 @@
+{
+    "timezone"         : "America/Winnipeg",
+    "block_size"       : "10000",
+    "driver"           : "/opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.4.so.2.1",
+    "state_file_path"  : "/home/connectin/data/latest_written_date_",
+    "data_file_path"   : "/home/connectin/data/",
+    "tables"           : [
+        {
+            "table_name"           : "FCT_SPEEDTEST",
+            "measurements"  : [
+            {
+                "measurement_name"     : "SPEEDTEST_IPERF_PING",
+                "columns"              : [
+                    {
+                        "column_name": "PING",
+                        "is_tag"     : false,
+                        "type"       : "float"
+                    },
+                    {
+                        "column_name": "PROVIDER",
+                        "is_tag"     : true,
+                        "type"       : "string"
+                    },
+                    {
+                        "column_name": "IP",
+                        "is_tag"     : true,
+                        "type"       : "string"
+                    },
+                    {
+                        "column_name": "TEST_SERVER",
+                        "is_tag"     : true,
+                        "type"       : "string"
+                    },
+                    {
+                        "column_name": "PROVINCE",
+                        "is_tag"     : true,
+                        "type"       : "string"
+                    },
+                    {
+                        "column_name": "SK_PI",
+                        "is_tag"     : true,
+                        "type"       : "integer"
+                    },
+                {
+                        "column_name": "PI_MAC",
+                        "is_tag"     : true,
+                        "type"       : "string"
+                    }
+
+                ]
+            },
+            {
+                "measurement_name"     : "SPEEDTEST_IPERF_UPLOAD",
+                "columns"              : [
+                    {
+                        "column_name": "UPLOAD",
+                        "is_tag"     : false,
+                        "type"       : "float"
+                    },
+                    {
+                        "column_name": "PROVIDER",
+                        "is_tag"     : true,
+                        "type"       : "string"
+                    },
+                    {
+                        "column_name": "IP",
+                        "is_tag"     : true,
+                        "type"       : "string"
+                    },
+                    {
+                        "column_name": "TEST_SERVER",
+                        "is_tag"     : true,
+                        "type"       : "string"
+                    },
+                    {
+                        "column_name": "PROVINCE",
+                        "is_tag"     : true,
+                        "type"       : "string"
+                    },
+                    {
+                        "column_name": "SK_PI",
+                        "is_tag"     : true,
+                        "type"       : "integer"
+                    },
+                {
+                        "column_name": "PI_MAC",
+                        "is_tag"     : true,
+                        "type"       : "string"
+                    }
+
+                ]
+            },
+            {
+                "measurement_name"     : "SPEEDTEST_IPERF_DOWNLOAD",
+                "columns"              : [
+                    {
+                        "column_name": "DOWNLOAD",
+                        "is_tag"     : false,
+                        "type"       : "float"
+                    },
+                    {
+                        "column_name": "PROVIDER",
+                        "is_tag"     : true,
+                        "type"       : "string"
+                    },
+                    {
+                        "column_name": "IP",
+                        "is_tag"     : true,
+                        "type"       : "string"
+                    },
+                    {
+                        "column_name": "TEST_SERVER",
+                        "is_tag"     : true,
+                        "type"       : "string"
+                    },
+                    {
+                        "column_name": "PROVINCE",
+                        "is_tag"     : true,
+                        "type"       : "string"
+                    },
+                    {
+                        "column_name": "SK_PI",
+                        "is_tag"     : true,
+                        "type"       : "integer"
+                    },
+                {
+                        "column_name": "PI_MAC",
+                        "is_tag"     : true,
+                        "type"       : "string"
+                    }
+
+                ]
+            }
+    ],
+            "unix_timestamp_column": "DATA_DATE"
+        }
+        ]
+}

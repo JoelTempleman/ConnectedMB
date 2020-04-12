@@ -1,0 +1,13 @@
+FROM tatianameleshko/ubuntu_odbc:latest
+
+RUN apt-get install -y cron
+
+COPY utils/cronjobs /etc/cron.d/cronjobs
+
+RUN crontab /etc/cron.d/cronjobs
+
+RUN touch /var/log/cron.log
+
+COPY utils/start.sh /usr/local/bin/start.sh
+
+CMD start.sh
