@@ -1,5 +1,7 @@
 # MB_School_Backbone Project
 
+Test change via Github from iMac
+
 This is a spin off project from https://github.com/cybera/connectin-infra, https://github.com/cybera/connectin, and https://github.com/jpillora/csv-to-influxdb. I would like to thank the contributors from those teams for their work and contributions to this project.
 
 In this version, the target locations of the data collection will be the approx 700 Public Schools in Manitoba (or as many as access and funding will permit). Collecting Ping, Speed, and Uptime for each location will provide a baseline for Broadband Internet connectivity. This baseline will identify the feasability of adapting more EdTech in a given location.
