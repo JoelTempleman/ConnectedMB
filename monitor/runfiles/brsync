@@ -1,0 +1,21 @@
+#!/bin/sh
+
+DS=clearskystatus.info # DataBase Server Address
+
+
+Hn="$(cat /proc/sys/kernel/hostname)"
+mac="$(cat /sys/class/net/eth0/address | tr ":" "-"   )"
+
+#find /tmp/OpenWrt/ -type f  -mtime +2  -exec rm -- '{}' \;
+
+if /bin/ping -q -c 1 -W 1 $DS >/dev/null; then
+  echo "IPv4 is up"
+
+echo "$mac  $Hn"
+/usr/bin/rsync -e 'ssh -p 22 -i /root/.ssh/id_rsa'  -bvupr -zz /csv/$Hn/ 'mfnerc\cscremote'@$DS:\CSV/$mac 
+echo "pruning"
+/usr/bin/find /csv/$Hn/ -type f  -mtime +7  -exec rm -- '{}' \; > echo
+
+else
+ echo "network down"
+fi

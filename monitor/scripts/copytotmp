@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#Script to copy project files into /tmp folder at each boot
+#Copyright (c) Joel Templeman 2020
+
+# This script runs on reboot to copy the project files to the 
+# temporary directory

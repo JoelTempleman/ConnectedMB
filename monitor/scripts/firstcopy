@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# Script to copy files from USB to OpenWrt device
+# Copyright (c) Joel Templeman 2020
+
+# Find USB mount folder
+#ls -a */sda*
+
+function make_copy {
+
+	#Make a folder for the project files and copy them from USB
+        	mkdir /runfiles /runfiles/CSV /runfiles/CSV-INT
+        	cp -rf /mnt/sda1/runfiles/* /runfiles
+        	echo "Runfiles copied"
+
+        #Copy custom files over to specific locations
+	        \cp -f /mnt/sda1/scripts/dropbear /etc/config
+        	\cp -f /mnt/sda1/scripts/BannerFile /etc
+        	\cp -f /mnt/sda1/scripts/banner /etc
+        	echo "Custom scripts copied"	
+	
+	echo "Function works"
+
+}	
+
+if [ -d /runfiles ]; then
+
+	echo "Already there"
+	rm -r /runfiles/*
+	rmdir /runfiles
+	echo "Deleted" 
+
+        make_copy
+else
+	make_copy
+fi
+
+/etc/init.d/dropbear restart
+echo "Script Complete"

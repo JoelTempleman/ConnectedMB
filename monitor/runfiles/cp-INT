@@ -1,0 +1,18 @@
+#!/bin/sh
+
+Hn="$(cat /proc/sys/kernel/hostname)"
+
+cd /tmp/$Hn/interface-eth0.1
+for file in *; do mv "$file" "${file%.cs*}.csv" ;done
+for file in *csv; do mv "$file" "/tmp/runfiles/tmp2/LAN_$file" ;done
+
+cd /tmp/$Hn/interface-eth0.2
+for file in *; do mv "$file" "${file%.cs*}.csv" ;done
+for file in *csv; do mv "$file" "/tmp/runfiles/tmp2/WAN_$file" ;done
+
+
+cd /tmp/$Hn/interface-eth0.3
+for file in *; do mv "$file" "${file%.cs*}.csv" ;done
+for file in *csv; do mv "$file" "/tmp/runfiles/tmp2/BRWAN_$file" ;done
+
+

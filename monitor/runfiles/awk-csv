@@ -1,0 +1,31 @@
+#!/bin/bash
+ usage()
+{
+    echo "usage: sysinfo_page [[-f file ] | [-h]]"
+}
+  while [ "$1" != "" ]; do
+    case $1 in 
+       -f | --file )           shift
+                                filename1=$1
+                                ;;
+        -h | --help )           usage
+                                exit
+                                ;;
+        * )                     usage
+                                exit 1
+    esac
+    shift
+done
+#cd /tmp/NETWORKINFO/netlink-br-lan
+#for file in *; do cp "$file" "/share/CSVtemp/$file.csv" ;done
+cd /tmp/runfiles/tmp
+#name1=$filename1
+#name3= ${name1%-2*}
+
+awk 'BEGIN {FS=OFS=","}{$1=strftime("%Y-%m-%d %T",$1)}{print}' $filename1 > $filename1.tmp
+
+sed 's/1970-01-01 00:00:00/timestamp/' $filename1.tmp  > /tmp/runfiles/CSV/$filename1
+rm $filename1.tmp
+
+
+#awk -F "," -v OFS "," '{$1=strftime("%Y-%m-%d %T",$1)};1' $filename > new.csv

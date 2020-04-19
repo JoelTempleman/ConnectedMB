@@ -1,0 +1,1 @@
+sudo -H -u root /usr/bin/pm2 status -m -u root  >> /tmp/pm2.log

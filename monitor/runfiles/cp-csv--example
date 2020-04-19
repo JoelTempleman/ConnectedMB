@@ -1,0 +1,30 @@
+#!/bin/bash
+cd /tmp/NETWORKINFO/netlink-br-lan
+for file in *; do mv "$file" "${file%-20*}.csv" ;done
+for file in *csv; do mv "$file" "/tmp/runfiles/tmp/$file" ;done
+
+cd /tmp/NETWORKINFO/ping
+for file in *; do mv "$file" "${file%-20*}.csv" ;done
+for file in *csv; do mv "$file" "/tmp/runfiles/tmp/$file" ;done
+
+
+cd /tmp/NETWORKINFO/iwinfo-wlan0
+for file in *; do mv "$file" "${file%-20*}.csv" ;done
+for file in *csv; do mv "$file" "/tmp/runfiles/tmp/$file" ;done
+
+cd /tmp/NETWORKINFO/cpu-0
+for file in *; do mv "$file" "${file%-20*}.csv" ;done
+for file in *csv; do mv "$file" "/tmp/runfiles/tmp/$file" ;done
+
+cd /tmp/NETWORKINFO/cpu-1
+for file in *; do mv "$file" "${file%-20*}.csv" ;done
+for file in *csv; do mv "$file" "/tmp/runfiles/tmp/$file" ;done
+
+cd /tmp/NETWORKINFO/memory
+for file in *; do mv "$file" "${file%-20*}.csv" ;done
+for file in *csv; do mv "$file" "/tmp/runfiles/tmp/$file" ;done
+
+cd /tmp/NETWORKINFO/load
+for file in *; do mv "$file" "${file%-20*}.csv" ;done
+for file in *csv; do mv "$file" "/tmp/runfiles/tmp/$file" ;done
+
