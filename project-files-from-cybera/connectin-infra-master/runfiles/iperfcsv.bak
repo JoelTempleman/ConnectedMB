@@ -1,0 +1,16 @@
+#!/bin/sh
+#IP="$(ifconfig br-BRWAN | grep "inet addr" | cut -d ':' -f 2 | cut -d ' ' -f 1)"
+
+awk 'NR == 16{mul=1
+        if ($6 ~ /^M/) {mul=1024}
+        if ($6 ~ /^G/) {mul=1048576}
+        tf=$5*mul
+        mul=1
+        if ($8 ~ /^M/) {mul=1024}
+        if ($8 ~ /^G/) {mul=1048576}
+        bw=$7*mul
+        ic = split($3,ia,"-")
+        if (ic == 2) {iv = ia[2] - ia[1]} else {iv = 0}
+tm=strftime("%Y-%m-%d %T")
+        print tm "," iv "," tf "," bw
+    }'
