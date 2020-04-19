@@ -16,6 +16,7 @@ function make_copy {
 	        \cp -f /mnt/sda1/scripts/dropbear /etc/config
         	\cp -f /mnt/sda1/scripts/BannerFile /etc
         	\cp -f /mnt/sda1/scripts/banner /etc
+		\cp -f /mnt/sda1/scripts/copytotmp /
         	echo "Custom scripts copied"	
 	
 	echo "Function works"
