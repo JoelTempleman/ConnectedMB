@@ -5,6 +5,7 @@
 # This script runs on reboot to copy the project files to the 
 # temporary directory and start data collection
 
+mkdir /tmp/runfiles
 cp -rf /runfiles/* /tmp/runfiles
 echo "Runfiles Copied"
 
