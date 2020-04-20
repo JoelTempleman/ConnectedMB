@@ -4,3 +4,10 @@
 
 # This script runs on reboot to copy the project files to the 
 # temporary directory
+
+cp -rf /runfiles/* /tmp/runfiles
+
+cd /tmp/runfiles
+influxsend
+
+echo "Complete. Rules copied to /tmp"
