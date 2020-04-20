@@ -10,7 +10,7 @@ cp -rf /runfiles/* /tmp/runfiles
 echo "Runfiles Copied"
 
 cd /tmp/runfiles
-influxsend
+./tmp/runfiles/influxsend
 echo "influxsend run"
 
 echo "Complete. Rules copied to /tmp & started"
