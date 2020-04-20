@@ -3,11 +3,13 @@
 #Copyright (c) Joel Templeman 2020
 
 # This script runs on reboot to copy the project files to the 
-# temporary directory
+# temporary directory and start data collection
 
 cp -rf /runfiles/* /tmp/runfiles
+echo "Runfiles Copied"
 
 cd /tmp/runfiles
 influxsend
+echo "influxsend run"
 
-echo "Complete. Rules copied to /tmp"
+echo "Complete. Rules copied to /tmp & started"
