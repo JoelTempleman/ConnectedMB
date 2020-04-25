@@ -3,11 +3,31 @@
 # temporary directory and start data collection
 # Name:"copytotmp" Copyright (c) Joel Templeman 2020
 
-mkdir /tmp/runfiles
-cp -rf /runfiles/* /tmp/runfiles
-echo "Runfiles Copied"
+function make_copy {
 
-./tmp/runfiles/influxsend
-echo "influxsend run"
+	mkdir /tmp/runfiles
+	cp -rf /runfiles/* /tmp/runfiles
+	echo "Runfiles Copied"
 
-echo "Complete. Rules copied to /tmp & started"
+	./tmp/runfiles/influxsend
+	echo "influxsend called"
+
+	echo "Complete. Rules copied to /tmp & started"
+
+}
+
+echo "copytotmp"
+
+if [ -d /tmp/runfiles ]; then
+
+	echo "Already there"
+	rm -rf /tmp/runfiles/*
+	rmdir /tmp/runfiles
+	echo "Deleted"
+
+	make_copy
+else
+	make_copy
+fi
+
+echo "Script Complete"
