@@ -1,15 +1,12 @@
 #!/usr/bin/env bash
-#Script to copy project files into /tmp folder at each boot
-#Copyright (c) Joel Templeman 2020
-
-# This script runs on reboot to copy the project files to the 
+# This script runs on reboot to copy the project files to the
 # temporary directory and start data collection
+# Name:"copytotmp" Copyright (c) Joel Templeman 2020
 
 mkdir /tmp/runfiles
 cp -rf /runfiles/* /tmp/runfiles
 echo "Runfiles Copied"
 
-cd /tmp/runfiles
 ./tmp/runfiles/influxsend
 echo "influxsend run"
 
