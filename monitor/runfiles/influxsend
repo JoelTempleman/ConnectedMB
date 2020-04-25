@@ -1,11 +1,14 @@
 #!/bin/bash
+# Name "influxsend" Copyright (c) Cybera
+
+echo "influxsend"
 
 #mkdir /tmp/runfiles/tmp
 #cd /tmp/runfiles/tmp
 #/tmp/runfiles/./timer.pl 30 /tmp/runfiles/./Sendinflux.pl
-echo "Tmp created and ./Sendinflux.pl run"
+#echo "tmp created and ./Sendinflux.pl run"
 
 mkdir /tmp/runfiles/tmp2
 cd /tmp/runfiles/tmp2
 /tmp/runfiles/./timer.pl 30 /tmp/runfiles/./SendINT.pl #& /tmp/runfiles/./Sendinflux.pl
-echo "Tmp created and ./SendINT.pl & ./Sendinflux.pl run"
+echo "tmp2 created ./timer.pl and ./SendINT.pl and ./Sendinflux.pl run"
