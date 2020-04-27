@@ -17,7 +17,7 @@ function make_copy {
 	#Make a folder for the project files and copy them from USB
         	mkdir /runfiles /runfiles/CSV /runfiles/CSV-INT
         	cp -rf /mnt/sda1/runfiles/* /runfiles
-        	echo "$now  Runfiles copied" >> /degug/logfile
+        	echo "$now  Runfiles copied" >> /debug/logfile
 
         #Copy custom files over to specific locations
 	        \cp -f /mnt/sda1/scripts/dropbear /etc/config
@@ -28,13 +28,13 @@ function make_copy {
 		\cp -f /etc/rc.local /etc/rc.local.bak
 		\cp -f /mnt/sda1/scripts/rc.local /etc/rc.local
 		\cp -f /mnt/sda1/runfiles/Ping.pm /usr/lib/perl5/5.28/
-		echo " $now   Custom scripts copied" >> /debug/logfile	
+		echo "$now  Custom scripts copied" >> /debug/logfile	
 	
 	echo "$now  Function works" >> /debug/logfile
 
 }	
 
-echo "$now firstcopy" >> /debug/logfile
+echo "$now  firstcopy complete" >> /debug/logfile
 
 if [ -d /runfiles ]; then
 
