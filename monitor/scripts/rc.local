@@ -3,7 +3,7 @@
 
 ./copytotmp
 
-date=$(now)
-echo $now & " ./copytotmp run on boot" >> /debug/logfile
+now=$(date)
+echo "$now  ./copytotmp run on boot" >> /debug/logfile
 
 exit 0
