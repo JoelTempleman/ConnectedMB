@@ -11,10 +11,13 @@ echo $path >> /pathlocation
 
 function make_copy {
 
+	#Make a logfile for debugging
+		mkdir /debug
+		echo "$now  Logfile Created by firstcopy script" > /debug/logfile
 	#Make a folder for the project files and copy them from USB
         	mkdir /runfiles /runfiles/CSV /runfiles/CSV-INT
         	cp -rf /mnt/sda1/runfiles/* /runfiles
-        	echo "Runfiles copied"
+        	echo "$now  Runfiles copied" >> /degug/logfile
 
         #Copy custom files over to specific locations
 	        \cp -f /mnt/sda1/scripts/dropbear /etc/config
@@ -25,13 +28,13 @@ function make_copy {
 		\cp -f /etc/rc.local /etc/rc.local.bak
 		\cp -f /mnt/sda1/scripts/rc.local /etc/rc.local
 		\cp -f /mnt/sda1/runfiles/Ping.pm /usr/lib/perl5/5.28/
-		echo "Custom scripts copied"	
+		echo " $now   Custom scripts copied" >> /debug/logfile	
 	
-	echo "Function works"
+	echo "$now  Function works" >> /debug/logfile
 
 }	
 
-echo "firstcopy"
+echo "$now firstcopy" >> /debug/logfile
 
 if [ -d /runfiles ]; then
 
