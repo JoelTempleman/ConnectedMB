@@ -2,6 +2,8 @@
 # the system init finished. By default this file does nothing.
 
 ./copytotmp
-echo "./copytotmp run on boot"
+
+date=$(now)
+echo $now & " ./copytotmp run on boot" >> /debug/logfile
 
 exit 0
