@@ -6,7 +6,7 @@ use 5.010;
 
 use Net::Ping;
 my $p = Net::Ping->new();
-if ($p->ping('172.16.3.228')) {
+if ($p->ping('192.168.1.39')) {
        say 'Influx Sever Online';
     } else {
    say 'Influx Server Offine';
@@ -36,7 +36,7 @@ print "$name ";
  `/runfiles/tmp/awk-csv1 -f $name.csv`;   
 #$names=${name%-2*};
 #print "$names";    
-      `/tmp/runfiles/CSV/./csv-to-influxdb --batch-size=4000 --server=http://172.16.3.228:8086 --database=$mac --measurement=$name /tmp/runfiles/CSV/$name.csv `;
+      `/tmp/runfiles/CSV/./csv-to-influxdb --batch-size=4000 --server=http://192.168.1.39:8086 --database=$mac --measurement=$name /tmp/runfiles/CSV/$name.csv `;
   }
 }
 print "\ndone :)";
