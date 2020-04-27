@@ -1,14 +1,16 @@
 #!/bin/bash
 # Name "influxsend" Copyright (c) Cybera
 
-echo "influxsend"
+now=$(date)
+
+echo "$now  influxsend run" >> /debug/logfile
 
 #mkdir /tmp/runfiles/tmp
 #cd /tmp/runfiles/tmp
 #/tmp/runfiles/./timer.pl 30 /tmp/runfiles/./Sendinflux.pl
-#echo "tmp created and ./Sendinflux.pl run"
+#echo "$now  tmp created and ./Sendinflux.pl run" >> /debug/logfile
 
 mkdir /tmp/runfiles/tmp2
 cd /tmp/runfiles/tmp2
 /tmp/runfiles/./timer.pl 30 /tmp/runfiles/./SendINT.pl #& /tmp/runfiles/./Sendinflux.pl
-echo "tmp2 created ./timer.pl and ./SendINT.pl and ./Sendinflux.pl run"
+echo "$now  tmp2 created ./timer.pl and ./SendINT.pl and ./Sendinflux.pl run" >> /debug/logfile
