@@ -5,6 +5,7 @@
 # Find USB mount folder
 path=ls -a */sda*
 echo $path
+echo $path > /pathlocation
 
 function make_copy {
 
@@ -19,6 +20,9 @@ function make_copy {
         	\cp -f /mnt/sda1/scripts/banner /etc
 		\cp -f /mnt/sda1/scripts/copytotmp /
         	chmod +x /copytotmp
+		\cp -f /etc/rc.local /etc/rc.local.bak
+		\cp -f /mnt/sda1/scripts/rc.local /etc/rc.local
+		\cp -f /mnt/sda1/runfiles/Ping.pm /usr/lib/perl5/5.28/
 		echo "Custom scripts copied"	
 	
 	echo "Function works"
