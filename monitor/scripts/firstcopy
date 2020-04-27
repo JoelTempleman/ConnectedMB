@@ -2,10 +2,12 @@
 # Script to copy files from USB to OpenWrt device
 # Name: "firstcopy" Copyright (c) Joel Templeman 2020
 
+now=$(date)
+
 # Find USB mount folder
-path=ls -a */sda*
-echo $path
-echo $path > /pathlocation
+path=$(ls -a */sda*)
+echo $now > /pathlocation
+echo $path >> /pathlocation
 
 function make_copy {
 
