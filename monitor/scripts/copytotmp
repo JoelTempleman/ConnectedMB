@@ -3,20 +3,22 @@
 # temporary directory and start data collection
 # Name:"copytotmp" Copyright (c) Joel Templeman 2020
 
+now=$(date)
+
 function make_copy {
 
 	mkdir /tmp/runfiles
 	cp -rf /runfiles/* /tmp/runfiles
-	echo "Runfiles Copied"
+	echo "$now  Runfiles Copied" >> /debug/logfile
 
 	./tmp/runfiles/influxsend
-	echo "influxsend called"
+	echo "$now  influxsend called" >> /debug/logfile
 
-	echo "Complete. Rules copied to /tmp & started"
+	echo "$now  Complete. Rules copied to /tmp & influxsend started" >> /debug/logfile
 
 }
 
-echo "copytotmp"
+echo "$now  copytotmp complete" >> /debug/logfile
 
 if [ -d /tmp/runfiles ]; then
 
@@ -29,5 +31,3 @@ if [ -d /tmp/runfiles ]; then
 else
 	make_copy
 fi
-
-echo "Script Complete"
