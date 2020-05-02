@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  influxdb:
+    build:
+      context: .
+      dockerfile: dockerfiles/Dockerfile-influxdb
+    env_file:
+      - creds.env
+    ports:
+      - "8086:8086"
+    volumes:
+      - ./utils/influxdb.conf:/etc/influxdb/influxdb.conf
+      - ./:/home/connectin
+  cronjobs:
+    build:
+      context: .
+      dockerfile: dockerfiles/Dockerfile-cronjobs
+    env_file:
+      - creds.env
+    volumes:
+      - ./:/home/connectin 
+  jupyter:
+    build:
+      context: .
+      dockerfile: dockerfiles/Dockerfile-jupyter
+    env_file:
+      - creds.env
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./:/home/connectin
+  dash:
+    build:
+      context: .
+      dockerfile: dockerfiles/Dockerfile-dashboard
+    env_file:
+      - creds.env
+    ports:
+      - "8050:8050"
+    volumes:
+      - ./:/home/connectin
