@@ -1,7 +1,7 @@
 {
     "timezone"         : "America/Winnipeg",
     "block_size"       : "10000",
-    "driver"           : "/opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.4.so.2.1",
+    "driver"           : "/opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.5.so.2.1",
     "state_file_path"  : "/home/connectin/data/latest_written_date_",
     "data_file_path"   : "/home/connectin/data/",
     "tables"           : [
