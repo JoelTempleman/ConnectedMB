@@ -5,9 +5,9 @@
 now=$(date)
 
 # Find USB mount folder
-path=$(ls -a */sda*)
-echo $now > /pathlocation
-echo $path >> /pathlocation
+#path=$(ls -a */sda*)
+#echo $now > /pathlocation
+#echo $path >> /pathlocation
 
 function make_copy {
 
@@ -16,18 +16,18 @@ function make_copy {
 		echo "$now  Logfile Created by firstcopy script" > /debug/logfile
 	#Make a folder for the project files and copy them from USB
         	mkdir /runfiles /runfiles/CSV /runfiles/CSV-INT
-        	cp -rf /mnt/sda1/runfiles/* /runfiles
+        	cp -rf /mnt/sda1/monitor/runfiles/* /runfiles
         	echo "$now  Runfiles copied" >> /debug/logfile
 
         #Copy custom files over to specific locations
-	        \cp -f /mnt/sda1/scripts/dropbear /etc/config
-        	\cp -f /mnt/sda1/scripts/BannerFile /etc
-        	\cp -f /mnt/sda1/scripts/banner /etc
-		\cp -f /mnt/sda1/scripts/copytotmp /
+	        \cp -f /mnt/sda1/monitor/scripts/dropbear /etc/config
+        	\cp -f /mnt/sda1/monitor/scripts/BannerFile /etc
+        	\cp -f /mnt/sda1/monitor/scripts/banner /etc
+		\cp -f /mnt/sda1/monitor/scripts/copytotmp /
         	chmod +x /copytotmp
 		\cp -f /etc/rc.local /etc/rc.local.bak
-		\cp -f /mnt/sda1/scripts/rc.local /etc/rc.local
-		\cp -f /mnt/sda1/runfiles/Ping.pm /usr/lib/perl5/5.28/
+		\cp -f /mnt/sda1/monitor/scripts/rc.local /etc/rc.local
+		\cp -f /mnt/sda1/monitor/runfiles/Ping.pm /usr/lib/perl5/5.28/
 		echo "$now  Custom scripts copied" >> /debug/logfile	
 	
 	echo "$now  Function works" >> /debug/logfile
@@ -36,11 +36,16 @@ function make_copy {
 
 echo "$now  firstcopy complete" >> /debug/logfile
 
+# This is only needed for development. In production this should be a one time process. 
+# This is only otherwise needed if the user accidently runs the script more than once.
+
 if [ -d /runfiles ]; then
 
 	echo "Already there"
 	rm -r /runfiles/*
 	rmdir /runfiles
+	rm /debug/logfile
+	rmdir /debug
 	echo "Deleted" 
 
         make_copy
