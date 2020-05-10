@@ -4,12 +4,46 @@ use warnings;
 
 use 5.010;
 
+sub GetServerAddress {
+
+    use File::Spec;
+
+    if ( not "/tmp/runfiles/" ) {
+       die qq(Directory doesn't exist);
+    }
+
+    my $filePath = "/tmp/runfiles/serverlist";
+
+    open( my $fileHandle, "<", $filePath )
+       or die qq(Cannot open $filePath for reading! $!);  # 1.
+
+    my $test_sequence_value;                              # 2.
+    while( my $line = <$fileHandle> ) {
+        chomp $line;
+        next unless $line =~ /^\s*DBASE\s*=\s*(.*)\s*/; # 3.
+        $test_sequence_value = $1;
+        last;
+    }
+    close $fileHandle;
+    if ( defined $test_sequence_value ) {                 # 4.
+        # Whatever you do if you find that value...
+        return $test_sequence_value;
+    }
+    else {
+        # Whatever you do if the value isn't found...
+        return;
+    }
+}
+
+my $IP = GetServerAddress();
+#print $IP;
+
 use Net::Ping;
 my $p = Net::Ping->new();
-if ($p->ping('192.168.1.39')) {
-       say 'Influx Sever Online';
+if ($p->ping( $IP )) {
+       say "Influx Server Online & $IP";
     } else {
-   say 'Influx Server Offine';
+   say "Influx Server Offine & $IP";
 exit;
 }
 
@@ -34,9 +68,9 @@ $mac =~ tr/:/-/;
 
 print "$name ";    
  `/runfiles/tmp/awk-csv1 -f $name.csv`;   
-#$names=${name%-2*};
-#print "$names";    
-      `/tmp/runfiles/CSV/./csv-to-influxdb --batch-size=4000 --server=http://192.168.1.39:8086 --database=$mac --measurement=$name /tmp/runfiles/CSV/$name.csv `;
+$names=${name%-2*};
+print "$names";    
+      `/tmp/runfiles/CSV/./csv-to-influxdb --batch-size=4000 --server=http://$IP:8086 --database=$mac --measurement=$name /tmp/runfiles/CSV/$name.csv `;
   }
 }
 print "\ndone :)";
