@@ -39,12 +39,16 @@ sub GetServerAddress {
 my $IP = GetServerAddress();
 #print $IP;
 
+now="$(DATE)"
+
 use Net::Ping;
 my $p = Net::Ping->new();
 if ($p->ping( $IP )) {
        say "Influx Server Online & $IP";
+       echo "$now Influx Server Online & $IP" > /debug/logfile;
     } else {
    say "Influx Server Offine & $IP";
+   echo "$now Influx Server OFFLINE & $IP" > /debug/logfile;
 exit;
 }
 
