@@ -24,7 +24,7 @@ uci set system.@system[0].ttylogin="1" && uci commit system
 # block detect | uci import fstab && uci set fstab.@mount[-1].enabled='1' && uci commit fstab && uci set fstab.@global[0].check_fs='1' && uci commit fstab && uci commit
 
 # Copy down project files
-wget -r 192.168.1.39/packages/monitor -P /tmp
+wget -r --no-parent 192.168.1.39/packages/monitor/ -P /tmp
 
 # Launch the first copy
 cat /www/index.html
