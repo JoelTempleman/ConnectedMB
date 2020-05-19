@@ -52,4 +52,4 @@ else
 fi
 
 /etc/init.d/dropbear restart
-echo "$now Firstcopy Script EOF" >> /debug/logfile
+echo "$now Firstcopy Script EOF"
