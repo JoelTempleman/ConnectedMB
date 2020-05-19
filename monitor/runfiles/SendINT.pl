@@ -37,7 +37,7 @@ sub GetServerAddress {
 }
 
 my $IP = GetServerAddress();
-echo "$now $IP" >> /debug/logfile;
+'echo "$now $IP" >> /debug/logfile';
 
 'now=$(date)';
 
