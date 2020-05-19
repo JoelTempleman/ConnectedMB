@@ -6,51 +6,52 @@ use 5.010;
 
 sub GetServerAddress {
 
-    use File::Spec;
-
-    if ( not "/tmp/runfiles/" ) {
-       die qq(Directory doesn't exist);
-    }
-
-    my $filePath = "/tmp/runfiles/serverlist";
-
-    open( my $fileHandle, "<", $filePath )
-       or die qq(Cannot open $filePath for reading! $!);  # 1.
-
-    my $test_sequence_value;                              # 2.
-    while( my $line = <$fileHandle> ) {
-        chomp $line;
-        next unless $line =~ /^\s*DBASE\s*=\s*(.*)\s*/; # 3.
-        $test_sequence_value = $1;
-        last;
-    }
-    close $fileHandle;
-    if ( defined $test_sequence_value ) {                 # 4.
-        # Whatever you do if you find that value...
-        return $test_sequence_value;
-    }
-    else {
-        # Whatever you do if the value isn't found...
-        return;
-    }
-}
-
-my $IP = GetServerAddress();
-'echo "$now $IP" >> /debug/logfile';
-
-'now=$(date)';
-
-use Net::Ping;
-my $p = Net::Ping->new();
-if ($p->ping( $IP )) {
-       say "Influx Server Online & $IP";
-       'echo "$now - Influx Server Online & $IP" >> /debug/logfile';
-    } else {
-   say "Influx Server Offine & $IP";
-   'echo "$now - Influx Server OFFLINE & $IP" >> /debug/logfile';
-exit;
-}
-
+    use File::Spec;                                                                               
+                                                                                                   
+    if ( not "/tmp/runfiles/" ) {                                                                  
+       die qq(Directory doesn't exist);                                                            
+    }                                                                                              
+                                                                                                   
+    my $filePath = "/tmp/runfiles/serverlist";                                                     
+                                                                                                   
+    open( my $fileHandle, "<", $filePath )                                                         
+       or die qq(Cannot open $filePath for reading! $!);                                           
+                                                                                                   
+    my $test_sequence_value;                                                                       
+    while( my $line = <$fileHandle> ) {                                                            
+        chomp $line;                                                                               
+        next unless $line =~ /^\s*DBASE\s*=\s*(.*)\s*/;                                            
+        $test_sequence_value = $1;                                                                 
+        last;                                                                                      
+    }                                                                                              
+    close $fileHandle;                                                                             
+    if ( defined $test_sequence_value ) {                                                          
+        # Whatever you do if you find that value...                                                
+        return $test_sequence_value;                                                               
+    }                                                                                              
+    else {                                                                                         
+        # Whatever you do if the value isn't found...                                              
+        return;                                                                                    
+    }                                                                                              
+}                                                                                                  
+                                                                                                   
+my $IP = GetServerAddress();                                                                       
+                                                                                                   
+use Net::Ping;                                                                                     
+                                                                                                   
+open OUTPUTS, ">>", "/debug/logfile" or die $!;                                                    
+                                                                                                   
+my $p = Net::Ping->new();                                                                          
+if ($p->ping( $IP )) {                                                                             
+       say "Sendinflux Influx Server Online at $IP";                                                  
+       print OUTPUTS "Sendinflux Influx Server Online at $IP\n";                                      
+    } else {                                                                                       
+   say "Sendinflux Influx Server OFFLINE at $IP";                                                     
+   print OUTPUTS "Sendinflux Influx Server OFFLINE at $IP\n";                                         
+exit;                                                                                              
+}                                                                                                  
+                                                                                                   
+close(OUTPUTS);   
 
 #`cd /tmp/runfiles/tmp/`;
 
