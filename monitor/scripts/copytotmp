@@ -11,6 +11,7 @@ function make_copy {
 	cp -rf /runfiles/* /tmp/runfiles
 	echo "$now  Runfiles Copied" >> /debug/logfile
 
+	chmod +x /tmp/runfiles/influxsend
 	/tmp/runfiles/./influxsend
 	echo "$now  influxsend called" >> /debug/logfile
 
