@@ -2,12 +2,9 @@
 # Script to copy files from USB to OpenWrt device
 # Name: "firstcopy" Copyright (c) Joel Templeman 2020
 
-now=$(date)
-
-# Find USB mount folder
-#path=$(ls -a */sda*)
-#echo $now > /pathlocation
-#echo $path >> /pathlocation
+now=$(date)	# Get current date/time
+#echo "IP Address of host server: "  
+#read IP_Address
 
 function make_copy {
 
@@ -16,18 +13,18 @@ function make_copy {
 		echo "$now  Logfile Created by firstcopy script" > /debug/logfile
 	#Make a folder for the project files and copy them from USB
         	mkdir /runfiles /runfiles/CSV /runfiles/CSV-INT
-        	cp -rf /mnt/sda1/monitor/runfiles/* /runfiles
+        	cp -rf /tmp/packages/monitor/runfiles/* /runfiles
         	echo "$now  Runfiles copied" >> /debug/logfile
 
         #Copy custom files over to specific locations
-	        \cp -f /mnt/sda1/monitor/scripts/dropbear /etc/config
-        	\cp -f /mnt/sda1/monitor/scripts/BannerFile /etc
-        	\cp -f /mnt/sda1/monitor/scripts/banner /etc
-		\cp -f /mnt/sda1/monitor/scripts/copytotmp /
+	        \cp -f /tmp/packages/monitor/scripts/dropbear /etc/config
+        	\cp -f /tmp/packages/monitor/scripts/BannerFile /etc
+        	\cp -f /tmp/packages/monitor/scripts/banner /etc
+		\cp -f /tmp/packages/monitor/scripts/copytotmp /
         	chmod +x /copytotmp
 		\cp -f /etc/rc.local /etc/rc.local.bak
-		\cp -f /mnt/sda1/monitor/scripts/rc.local /etc/rc.local
-		\cp -f /mnt/sda1/monitor/runfiles/Ping.pm /usr/lib/perl5/5.28/
+		\cp -f /tmp/packages/monitor/scripts/rc.local /etc/rc.local
+		\cp -f /tmp/packages/monitor/runfiles/Ping.pm /usr/lib/perl5/5.28/
 		echo "$now  Custom scripts copied" >> /debug/logfile	
 	
 	echo "$now  Function works" >> /debug/logfile
@@ -44,8 +41,10 @@ if [ -d /runfiles ]; then
 	echo "Already there"
 	rm -r /runfiles/*
 	rmdir /runfiles
-	rm /debug/logfile
-	rmdir /debug
+		if [ -d /debug ]; then
+			rm /debug/logfile
+			rmdir /debug
+		fi
 	echo "Deleted" 
 
         make_copy
@@ -54,4 +53,4 @@ else
 fi
 
 /etc/init.d/dropbear restart
-echo "Script Complete"
+echo "Firstcopy Script Complete"
