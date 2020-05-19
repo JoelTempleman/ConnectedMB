@@ -12,6 +12,9 @@ function make_copy {
 	echo "$now  Runfiles Copied" >> /debug/logfile
 
 	chmod +x /tmp/runfiles/influxsend
+	chmod +x /tmp/runfiles/timer.pl
+	chmod +x /tmp/runfiles/SendINT.pl
+	chmod +x /tmp/runfiles/Sendinflux.pl
 	/tmp/runfiles/./influxsend
 	echo "$now  influxsend called" >> /debug/logfile
 
