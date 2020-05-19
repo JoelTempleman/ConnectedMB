@@ -2,6 +2,9 @@
 # Script to install project dependancies and call the "firstcopy" script
 # Name: "install.sh" Copyright (c) Joel Templeman 2020
 
+read -p "Enter the IP Address of the project host server: " IP_Address
+echo "$IP_Address"
+
 opkg update
 
 # All required packages
@@ -24,8 +27,8 @@ uci set system.@system[0].ttylogin="1" && uci commit system
 # block detect | uci import fstab && uci set fstab.@mount[-1].enabled='1' && uci commit fstab && uci set fstab.@global[0].check_fs='1' && uci commit fstab && uci commit
 
 # Copy down project files
-wget -r --no-parent 192.168.1.39/packages/monitor/ -P /tmp
+wget -r --no-parent http://$IP_Address/packages/monitor/ -P /tmp
 
 # Launch the first copy
-cat /www/index.html
+/tmp/packages/monitor/scripts/./firstcopy
 
