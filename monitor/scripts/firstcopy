@@ -27,11 +27,10 @@ function make_copy {
 		\cp -f /tmp/packages/monitor/runfiles/Ping.pm /usr/lib/perl5/5.28/
 		echo "$now  Custom scripts copied" >> /debug/logfile	
 	
-	echo "$now  Function works" >> /debug/logfile
+	echo "$now  firstcopy complete" >> /debug/logfile
 
 }	
 
-echo "$now  firstcopy complete" >> /debug/logfile
 
 # This is only needed for development. In production this should be a one time process. 
 # This is only otherwise needed if the user accidently runs the script more than once.
@@ -53,4 +52,4 @@ else
 fi
 
 /etc/init.d/dropbear restart
-echo "Firstcopy Script Complete"
+echo "$now Firstcopy Script EOF" >> /debug/logfile
