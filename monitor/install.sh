@@ -30,5 +30,6 @@ uci set system.@system[0].ttylogin="1" && uci commit system
 wget -r --no-parent -nH http://$IP_Address/packages/monitor/ -P /tmp
 
 # Launch the first copy
+chmod +x /tmp/packages/monitor/scripts/firstcopy
 /tmp/packages/monitor/scripts/./firstcopy
 
