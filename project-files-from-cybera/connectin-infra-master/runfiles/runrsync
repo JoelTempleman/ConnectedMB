@@ -1,5 +1,0 @@
-#!/bin/bash
-#cp -r /runfiles /tmp
-echo "starting"
-sleep 10
-/runfiles/./timer.pl 30 /runfiles/./brsync 
