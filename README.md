@@ -1,4 +1,4 @@
-# MB_School_Backbone Project
+# ConnectedMB Project
 
 This is a spin off project from https://github.com/cybera/connectin-infra, https://github.com/cybera/connectin, and https://github.com/jpillora/csv-to-influxdb. I would like to thank the contributors from those teams for their work and contributions to this project.
 
