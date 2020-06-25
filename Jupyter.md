@@ -1,4 +1,4 @@
-This project uses Jupyter files. What is an IPYNB file?
+Background information: This project uses Jupyter files. What is an IPYNB file?
 
 An IPYNB file is a notebook document used by Jupyter Notebook, an interactive computational environment designed to help scientists work with the Python language and their data. It contains all the content from the Jupyter Notebook web application session, which includes the inputs and outputs of computations, mathematics, images, and explanatory text. IPYNB files can be exported to .HTML, .PDF, reStructuredText, and LaTeX formats.
 
