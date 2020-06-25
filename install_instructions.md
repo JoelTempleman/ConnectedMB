@@ -1,5 +1,7 @@
-# This project is intended as a learning project covering several topics. Each part can be auto-installed by following the direction and running the scripts, 
-# or the phases can be broken down and each step explored and explained.
+# Installation Overview
+
+This project is intended as a learning project covering several topics. Each part can be auto-installed by following the direction and running the scripts, 
+or the phases can be broken down and each step explored and explained.
 
 # The general phases are: 
 
