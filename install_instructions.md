@@ -20,5 +20,3 @@ Install: To install the project software on the remote clients.
 Test and modify: Under perfect conditions, the clients will collect data and send it to the server. Troubleshooting and corrections may be required.
 
 Data analysis: Using the software Jupyter, the collected data can be reviewed and used to show desired information.
-
-...
