@@ -30,7 +30,7 @@ services:
       - "8888:8888"
     volumes:
       - ./:/home/connectin
-  dash:
+   dash:
     build:
       context: .
       dockerfile: dockerfiles/Dockerfile-dashboard
@@ -40,3 +40,14 @@ services:
       - "8050:8050"
     volumes:
       - ./:/home/connectin
+   webserver:
+    build:
+      context: .
+      dockerfile: dockerfiles/Dockerfile-webserver
+    env_file:
+      - creds.env
+    ports:
+      - "80:80"
+    volumes:
+      - ./var/www/html
+      - ./:/home/connectin 
