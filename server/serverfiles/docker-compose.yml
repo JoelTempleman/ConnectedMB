@@ -49,5 +49,5 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./var/www/html
+      - ./webserver:/var/www/html
       - ./:/home/connectin 
