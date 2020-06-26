@@ -1,3 +1,1 @@
-FROM python:3-onbuild
-COPY . /user/src/app
-CMD ["python", "something.py"]
+FROM php:7.2-apache
