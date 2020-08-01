@@ -57,25 +57,25 @@ e) 	Install SSH Server:
 f)	Connect the Git Hub repository. See the instructions on creating your own spin off version of this project if you plan to customize it. If you just want 
 	an exact copy of my project, you can make a replica if you just clone the current directory with the command:
 	
-	“git clone git@github.com:JoelTempleman/ConnectedMB.git”	# See below on the commands needed to connect to the Git Hub repository
+	“sudo git clone git@github.com:JoelTempleman/ConnectedMB.git”	# See below on the commands needed to connect to the Git Hub repository
 
 g)	Follow these directions to connect the server to GitHub via SSH 
 	https://help.github.com/en/github/authenticating-to-github/about-ssh
 	
-	From another computer, use SSH to access the server:
-	
-	ssh connectin@IP-ADDRESS	# Login with Username: connectin and the password you used when installing the OS
+h)	From another computer, use SSH to access the server. I am using a computer running the Windows OS
+	and the software "Bitvise SSH Client" (https://www.bitvise.com/ssh-client-download)so I can cut and paste. On a Mac, 
+	you can just use the terminal window and command "ssh connectin@IP-ADDRESS" # Use the password you used when installing the OS:
 	
 	ssh-keygen -t rsa -b 4096 -C "your@email.com" # Just hit enter at the prompt three times to get the defaults.
-	eval "(ssh-agent -s)"
+	eval "$(ssh-agent -s)"
 	ssh-add ~/.ssh/id_rsa
 	cat ~/.ssh/id_rsa.pub    	# This will show the public encryption key. Copy the text.
 	
-h)	Go to your GitHub account in the web browser. Login. Go to Settings under the user profile. Go to SSH and GPG Keys. Click "New SSH key". 
+i)	Go to your GitHub account in the web browser. Login. Go to Settings under the user profile. Go to SSH and GPG Keys. Click "New SSH key". 
 	Give it a title to identify the key. Paste the key into the space marked "Key". Click "Add SSH Key".
 
 	cd /				# Go to the root directory! This is required to put the project files in the correct location
-	git clone git@github.com:JoelTempleman/ConnectedMB.git
+	sudo git clone git@github.com:JoelTempleman/ConnectedMB.git
 	cd /ConnectedMB
 	chmod +x install_project.sh
 	./install_project.sh
