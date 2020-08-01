@@ -41,24 +41,44 @@ c)	When prompted, make the username: “connectin”. This will make the file pa
 
 	Note: Do not install OpenSSH during setup process and don't choose any of the add-ons
 	
-d)	Reboot and login.
-	Note: There will be a bunch of information displayed. You should see the current IP address. Note that down so you can SSH into it later.
+d)	Reboot and login. Note: There will be a bunch of information displayed. You should see the current IP address. 
+	Write that down so you can SSH into it later.
 
 	Type: 	sudo apt upgrade -y
 		sudo apt update
 		
-e) 	Type:	sudo apt-get install openssh-server -y
+e) 	Install SSH Server:
+
+	Type:	sudo apt-get install openssh-server -y
 		sudo systemctl status ssh 		# If the ssh server isn't running try:
 			sudo systemctl enable ssh	# Only needed if not already running
 			sudo systemctl start ssh	# Only needed if not already running	
 
 f)	Connect the Git Hub repository. See the instructions on creating your own spin off version of this project if you plan to customize it. If you just want 
-	an exact copy of my project, you can make a replica if you just clone the current directory with the command “git clone 	
-	git@github.com:JoelTempleman/ConnectedMB.git”
+	an exact copy of my project, you can make a replica if you just clone the current directory with the command:
+	
+	“git clone git@github.com:JoelTempleman/ConnectedMB.git”	# See below on the commands needed to connect to the Git Hub repository
 
 g)	Follow these directions to connect the server to GitHub via SSH 
 	https://help.github.com/en/github/authenticating-to-github/about-ssh
 	
+	From another computer, use SSH to access the server:
+	
+	ssh connectin@IP-ADDRESS	# Login with Username: connectin and the password you used when installing the OS
+	
+	ssh-keygen -t rsa -b 4096 -C "your@email.com" # Just hit enter at the prompt three times to get the defaults.
+	eval "(ssh-agent -s)"
+	ssh-add ~/.ssh/id_rsa
+	cat ~/.ssh/id_rsa.pub    	# This will show the public encryption key. Copy the text.
+	
+h)	Go to your GitHub account in the web browser. Login. Go to Settings under the user profile. Go to SSH and GPG Keys. Click "New SSH key". 
+	Give it a title to identify the key. Paste the key into the space marked "Key". Click "Add SSH Key".
+
+	cd /				# Go to the root directory! This is required to put the project files in the correct location
+	git clone git@github.com:JoelTempleman/ConnectedMB.git
+	cd /ConnectedMB
+	chmod +x install_project.sh
+	./install_project.sh
 
 # Part 2.	Set up the OpenWRT for the RaspberryPi 3 B v 1.2
 
