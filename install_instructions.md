@@ -3,34 +3,66 @@
 This project is intended as a learning project covering several topics. Each part can be auto-installed by following the direction and running the scripts, 
 or the phases can be broken down and each step explored and explained.
 
+Contributors: Cybera – Tech Manitoba – MB Schools Project – Started 5 April 2020
+
 # The general phases are: 
 
-Preparing the equipment: 1) Test server; and 2) One or more remote clients.
+1) Preparing the equipment: a) find an appropriate project server; b) find one or more remote clients.
 
-Flashing the base OS: The server and client will need a base operating system installed.
+2) Flashing the base OS: The server and client will need a base operating system installed.
 
-Creating a test network: To isolate this network from the local network, a router will be setup.
+3) Creating a test network: To isolate this network from the local network, a router will be setup.
 
-Create a Git Hub account: To "fork" (copy) the existing project and explore software version control.
+4) Create a Git Hub account: To "fork" (copy) the existing project and explore software version control.
 
-Install: To install the project software on the server which will also act as a repository for the client software.
+5) Install: To install the project software on the server which will also act as a repository for the client software.
 
-Docker up: Start the multiple virtual servers.
+6) Docker up: Start the multiple virtual servers.
 
-Install: To install the project software on the remote clients.
+7) Install: To install the project software on the remote clients.
 
-Test and modify: Under perfect conditions, the clients will collect data and send it to the server. Troubleshooting and corrections may be required.
+8) Test and modify: Under perfect conditions, the clients will collect data and send it to the server. Troubleshooting and corrections may be required.
 
-Data analysis: Using the software Jupyter, the collected data can be reviewed and used to show desired information.
+9) Data analysis: Using the software Jupyter, the collected data can be reviewed and used to show desired information.
 
 # Detailed Instructions
+                  
+# Part 1. 	Set up the project server
 
-Cybera – Tech Manitoba – MB Schools Project – Started 5 April 2020
+I used a Dell Precision T3400 Intel Quad Core 2.4GHz Tower Workstation - 4GB RAM
+
+1.	Format the computer with the base OS and identify the user
+a)	I used https://www.balena.io/etcher/ to flash the USB with ubuntu-18.04.4-live-server-amd64.iso onto the hardware.
+
+b)	Insert the USB drive into the server and boot it up. Follow the instructions on the screen.
+
+c)	When prompted, make the username: “connectin”. This will make the file path /home/connectin/…  I wish this could be customizable, but later, the scripts
+	will copy the project files into that folder and a ton of scripts use the actual path to /home/connectin/.
+
+	Note: Do not install OpenSSH during setup process and don't choose any of the add-ons
+	
+d)	Reboot and login.
+	Note: There will be a bunch of information displayed. You should see the current IP address. Note that down so you can SSH into it later.
+
+	Type: 	sudo apt upgrade -y
+		sudo apt update
+		
+e) 	Type:	sudo apt-get install openssh-server -y
+		sudo systemctl status ssh 		# If the ssh server isn't running try:
+			sudo systemctl enable ssh	# Only needed if not already running
+			sudo systemctl start ssh	# Only needed if not already running	
+
+f)	Connect the Git Hub repository. See the instructions on creating your own spin off version of this project if you plan to customize it. If you just want 
+	an exact copy of my project, you can make a replica if you just clone the current directory with the command “git clone 	
+	git@github.com:JoelTempleman/ConnectedMB.git”
+
+g)	Follow these directions to connect the server to GitHub via SSH 
+	https://help.github.com/en/github/authenticating-to-github/about-ssh
+	
+
+# Part 2.	Set up the OpenWRT for the RaspberryPi 3 B v 1.2
 
 A step by step guide to set up a monitoring station
-                  
-
-1.	Set up the OpenWRT for the RaspberryPi 3 B v 1.2
 
 http://downloads.openwrt.org/releases/19.07.2/targets/brcm2708/bcm2709/openwrt-19.07.2-brcm2708-bcm2709-rpi-2-ext4-sysupgrade.img.gz
 
@@ -243,32 +275,9 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 https://openwrt.org/docs/guide-user/security/secure.access?s[]=uci&s[]=password
 
- 
-PART 2 – The Database Server
-
-
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+# Part 3.	Configuring the Database Server
   
-
-Dell Precision T3400 Intel Quad Core 2.4GHz Tower Workstation - 4GB RAM
-1.	Format the computer with the base OS and identify the user
-a)	I used https://www.balena.io/etcher/ to flash the USB with ubuntu-18.04.4-live-server-amd64.iso onto the hardware.
-
-b)	Insert the USB drive and boot up the server. Follow the instructions on the screen.
-
-c)	When prompted, make the username: “connectin”. This will make the file path /home/connectin/…  Later, the scripts will copy the project files into that folder.
-Note: Either check the option to install OpenSSH during setup and if not done, do it now:
-d)	Sudo apt-get install ssh
-Enable SSH vi /etc/ssh/sshd_config
-Service sshd restart
-e)	sudo apt update
-sudo spt upgrade
-
-f)	Connect the Git Hub repository. See the instructions on creating your own spin off version of this project if you plan to customize it. If not, you can make a replica if you just clone the current directory with the command “git clone git@github.com:JoelTempleman/ConnectedMB.git”
-
-g)	Follow these directions to connect the server to GitHub via SSH 
-https://help.github.com/en/github/authenticating-to-github/about-ssh
-
-
 
 Install and configure MS SQL
 
