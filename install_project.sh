@@ -19,4 +19,4 @@ cp /home/connectin/creds.env.example /home/connectin/creds.env  # This will prov
 
 cd /home/connectin      # Move to the home directory and start up Docker virtual machines. 
 sudo apt install docker-compose     # This will install all the requirements to run Docker VMs.
-sudo docker-compose up -d    # The -d is for "detacted" so they will run in the background and still allow use of the root OS.sudo
+sudo docker-compose up -d    # The -d is for "detached" so they will run in the background and still allow use of the root OS.sudo
