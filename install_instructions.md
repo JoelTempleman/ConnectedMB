@@ -81,7 +81,7 @@ i)	Go to your GitHub account in the web browser. Login. Go to Settings under the
 	git clone git@github.com:JoelTempleman/ConnectedMB.git
 	cd /ConnectedMB
 	chmod +x install_project.sh
-	./install_project.sh
+	./install_project.sh -y
 
 # Part 2.	Set up the OpenWRT for the RaspberryPi 3 B v 1.2
 
