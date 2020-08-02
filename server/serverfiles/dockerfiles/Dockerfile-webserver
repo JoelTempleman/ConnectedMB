@@ -2,5 +2,5 @@ FROM centos:latest
 RUN yum install httpd -y
 COPY /ConnectedMB/server/serverfiles/www/index.html /var/www/html/
 
-CMD [“/usr/sbin/httpd”,” -D”,” FOREGROUND”]
+ENTRYPOINT [“/usr/sbin/httpd”,” -D”,” FOREGROUND”]
 EXPOSE 80
