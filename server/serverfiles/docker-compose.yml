@@ -44,3 +44,7 @@ services:
     build:
       context: .
       dockerfile: dockerfiles/Dockerfile-webserver
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/home/connectin
