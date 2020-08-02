@@ -1,1 +1,6 @@
-FROM php:7.2-apache
+FROM centos:latest
+RUN yum install httpd -y
+COPY /ConnectedMB/server/serferfiles/www/index.html /var/www/html/
+
+CMD [“/usr/sbin/httpd”,” -D”,” FOREGROUND”]
+EXPOSE 80
