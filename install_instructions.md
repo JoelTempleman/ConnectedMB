@@ -66,6 +66,8 @@ h)	From another computer, use SSH to access the server. I am using a computer ru
 	and the software "Bitvise SSH Client" (https://www.bitvise.com/ssh-client-download)so I can cut and paste. On a Mac, 
 	you can just use the terminal window and command "ssh connectin@IP-ADDRESS" # Use the password you used when installing the OS:
 	
+	sudo -s		# Move to root power or it won't connect properly!
+	
 	ssh-keygen -t rsa -b 4096 -C "your@email.com" # Just hit enter at the prompt three times to get the defaults.
 	eval "$(ssh-agent -s)"
 	ssh-add ~/.ssh/id_rsa
