@@ -18,5 +18,5 @@ cp -rf /ConnectedMB/monitor/* /var/www/html/packages/ # Later, the client will u
 cp /home/connectin/creds.env.example /home/connectin/creds.env  # This will provide some default passwords to the virtual machines. These will be updated later.
 
 cd /home/connectin      # Move to the home directory and start up Docker virtual machines. 
-sudo apt install docker-compose     # This will install all the requirements to run Docker VMs.
-sudo docker-compose up -d    # The -d is for "detached" so they will run in the background and still allow use of the root OS.sudo
+sudo apt install docker-compose -y   # This will install all the requirements to run Docker VMs.
+sudo docker-compose up -d    # The -d is for "detached" so they will run in the background and still allow use of the root OS.
