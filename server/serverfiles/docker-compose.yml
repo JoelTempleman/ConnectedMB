@@ -44,10 +44,3 @@ services:
     build:
       context: .
       dockerfile: dockerfiles/Dockerfile-webserver
-    env_file:
-      - creds.env
-    ports:
-      - "80:80"
-    volumes:
-      - ./ConnectedMB/server/serverfiles/www:/var/www/html 
-      - ./:/home/connectin 
