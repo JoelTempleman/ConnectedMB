@@ -43,9 +43,9 @@ c)	When prompted, make the username: “connectin”. This will make the file pa
 	
 d)	Reboot and login. Note: There will be a bunch of information displayed. You should see the current IP address. 
 	Write that down so you can SSH into it later.
-
-	Type: 	sudo apt upgrade -y
-		sudo apt update
+	
+	Type: 	sudo apt update
+		sudo apt upgrade -y
 		
 e) 	Install SSH Server:
 
@@ -57,9 +57,10 @@ e) 	Install SSH Server:
 f)	Connect the Git Hub repository. See the instructions on creating your own spin off version of this project if you plan to customize it. If you just want 
 	an exact copy of my project, you can make a replica if you just clone the current directory with the command:
 	
-	“sudo git clone git@github.com:JoelTempleman/ConnectedMB.git”	# See below on the commands needed to connect to the Git Hub repository
+	“git clone git@github.com:JoelTempleman/ConnectedMB.git”	# See below on the commands needed 
+	to connect to the Git Hub repository
 
-g)	Follow these directions to connect the server to GitHub via SSH 
+g)	Follow these instructions and if you run into problems, check out the directions to connect the server to GitHub via SSH 
 	https://help.github.com/en/github/authenticating-to-github/about-ssh
 	
 h)	From another computer, use SSH to access the server. I am using a computer running the Windows OS
@@ -77,7 +78,7 @@ i)	Go to your GitHub account in the web browser. Login. Go to Settings under the
 	Give it a title to identify the key. Paste the key into the space marked "Key". Click "Add SSH Key".
 
 	cd /				# Go to the root directory! This is required to put the project files in the correct location
-	sudo git clone git@github.com:JoelTempleman/ConnectedMB.git
+	git clone git@github.com:JoelTempleman/ConnectedMB.git
 	cd /ConnectedMB
 	chmod +x install_project.sh
 	./install_project.sh
