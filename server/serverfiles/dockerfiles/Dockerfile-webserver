@@ -1,3 +1,5 @@
 FROM httpd:2.4
 
+COPY /ConnectedMB/server/serverfiles/www/* /usr/local/apache2
+
 EXPOSE 80
