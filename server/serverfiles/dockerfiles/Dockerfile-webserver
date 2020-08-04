@@ -4,6 +4,4 @@ RUN yum -y install httpd
 RUN systemctl start httpd
 RUN systemctl enable httpd
 
-CMD [“/usr/sbin/httpd”, “-D”, “FOREGROUND”]
-
 EXPOSE 80
