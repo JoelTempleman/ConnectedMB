@@ -8,4 +8,4 @@ services:
     ports:
       - "80:80"
     volumes:
-      - /var/www/html:/ConnectedMB/server/serverfiles/www
+      - /usr/local/apache2:/ConnectedMB/server/serverfiles/www
