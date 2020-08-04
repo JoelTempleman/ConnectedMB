@@ -7,6 +7,9 @@ set -x #echo on
 # There should already be a folder called /home/connectin that was created when the root OS was installed. Note: This name is used
 # simply because the source project this was forked from was called "connectin" and the code uses this user heavily in the code.
 
+cd /ConnectedMB
+git pull
+
 cp -rf /ConnectedMB/server/serverfiles/* /home/connectin/ # This will contain a clone copy of the Git Hub project
 
 mkdir /var/www/ # This directory will be used by the web server. 
