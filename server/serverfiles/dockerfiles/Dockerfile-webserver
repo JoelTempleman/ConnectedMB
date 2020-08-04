@@ -1,7 +1,5 @@
 FROM centos:7
 
-COPY /ConnectedMB/server/serverfiles/www/index.html /var/www/html/
-
 RUN yum -y --setopt=tsflags=nodocs update && \
     yum -y --setopt=tsflags=nodocs install httpd && \
     yum clean all
