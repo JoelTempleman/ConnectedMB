@@ -1,5 +1,5 @@
 FROM httpd:2.4
 
-COPY /ConnectedMB/server/serverfiles/www/* /usr/local/web
+COPY -f /ConnectedMB/server/serverfiles/www/* /usr/local/web
 
 EXPOSE 80
