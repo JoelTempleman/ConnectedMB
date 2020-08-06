@@ -1,8 +1,7 @@
 FROM httpd:2.4
 
-COPY /ConnectedMB/server/serverfiles/www/ /usr/local/web
-COPY . /usr/local/web
-COPY . /usr/local/apache2
-COPY . /var/www/html
+RUN apt-get install openssh-server -y
+
+COPY /ConnectedMB/server/serverfiles/www/ /var/www/html
 
 EXPOSE 80
