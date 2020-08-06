@@ -8,4 +8,4 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./www:/usr/local/apache2
+      - ./www:/usr/local/web/
