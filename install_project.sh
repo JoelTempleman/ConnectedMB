@@ -12,11 +12,9 @@ git pull
 
 cp -rf /ConnectedMB/server/serverfiles/* /home/connectin/ # This will contain a clone copy of the Git Hub project
 
-# mkdir /var/www/ # This directory will be used by the web server. 
-# mkdir /var/www/html/ # This directory will be used by the web server.
-# mkdir /var/www/html/packages/ # This directory will be used by the web server.
+mkdir /home/connectin/www/packages # All the files for the monitors will go here
 
-# cp -rf /ConnectedMB/monitor/* /home/connectin/www/packages/ # Later, the client will use the wget command to download all these files.
+cp -rf /ConnectedMB/monitor/* /home/connectin/www/packages/ # Later, the client will use the wget command to download all these files.
 
 cp /home/connectin/creds.env.example /home/connectin/creds.env  # This will provide some default passwords to the virtual machines. These will be updated later.
 
