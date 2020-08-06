@@ -8,4 +8,4 @@ services:
     ports:
       - "80:80"
     volumes:
-      - /home/connectin/www:/var/www/html
+      - ./www:/var/www/html
