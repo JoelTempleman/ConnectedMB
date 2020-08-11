@@ -67,7 +67,7 @@ h)	Follow these instructions and if you run into problems, check out the directi
 		ssh-keygen -t rsa -b 4096 -C "your@email.com" # Just hit enter at the prompt three times to get the defaults.
 		eval "$(ssh-agent -s)"
 		ssh-add ~/.ssh/id_rsa
-		cat ~/.ssh/id_rsa.pub    				# This will show the public encryption key. Copy the text.
+		cat ~/.ssh/id_rsa.pub    		# This will show the public encryption key. Copy the text.
 	
 i)	Go to your GitHub account in the web browser. Login. Go to Settings under the user profile. Go to SSH and GPG Keys. Click "New SSH key". 
 	Give it a title to identify the key. Paste the key into the space marked "Key". Click "Add SSH Key".
@@ -77,15 +77,31 @@ i)	Go to your GitHub account in the web browser. Login. Go to Settings under the
 	
 	“git clone git@github.com:JoelTempleman/ConnectedMB.git”	# See below on the commands needed to connect to the Git Hub repository
 	
-		cd /				# Go to the root directory! This is required to put the project files in the correct location
+		cd /		# Go to the root directory! 
+				# This is required to put the project files in the correct location
+				
 		git clone git@github.com:JoelTempleman/ConnectedMB.git
 		cd /ConnectedMB
 		chmod +x install_project.sh
 		./install_project.sh -y
+		
+j)	The "install_project.sh" script will do a few things for you. 
+
+	a)	It does a "git pull" command which copies all the files in the Git Hub repository into the folder /ConnectedMB
+	
+	b)	It copies the appropriate files into the /home/connectin. This includes the project configuration files and webpages. *(More about this later.)
+	
+	c)	Last, it installs Docker-compose and run the docker-compose file. This action will spin up all the required servers. *(More about this later.)
+	
+k)	From the remote computer, log into http://IP-ADDRESS-OF-SERVER (ex. http://192.168.1.100 ) 
+
+# Part 1.1. 	Configuring the project server for your environment
+
+
 
 # Part 2.	Set up the OpenWRT for the RaspberryPi 3 B v 1.2
 
-A step by step guide to set up a monitoring station
+1.	A step by step guide to set up a monitoring station
 
 http://downloads.openwrt.org/releases/19.07.2/targets/brcm2708/bcm2709/openwrt-19.07.2-brcm2708-bcm2709-rpi-2-ext4-sysupgrade.img.gz
 
@@ -100,11 +116,11 @@ I used https://www.balena.io/etcher/ to flash the micro SD card with the OpenWRT
 Copy everything in /monitor and /server. This will server both parts of the project setup. For the monitor, these are the key folders/files are:
 
 		/runfiles 		#everything for the project
-/scripts/dropbear		#modified branded version
-/scripts/banner		#includes “option BannerFile”
-/scripts/BannerFile	#includes branded text
-/scripts/copytotmp
-/tmp/runfiles/serverlist	#used by scripts to find target host server
+		/scripts/dropbear		#modified branded version
+		/scripts/banner		#includes “option BannerFile”
+		/scripts/BannerFile	#includes branded text
+		/scripts/copytotmp
+		/tmp/runfiles/serverlist	#used by scripts to find target host server
 
 3.	Connect the RaspberryPi to the local network with at least a CAT 6 cable. You will need to connect an HDMI monitor and keyboard for the setup only.
 
@@ -112,8 +128,8 @@ Copy everything in /monitor and /server. This will server both parts of the proj
 
 5.	Change Default IP Address and common ports. 
 
-	uci set network.lan.proto='dhcp' && uci commit
-	service network restart
+		uci set network.lan.proto='dhcp' && uci commit
+		service network restart
 
 6.	type “Ifconfig | grep inet” and copy the inet addr: in the br-lan section here for future use <<IP-Address>> ______________________________ (e.g. 192.168.1.49)
 
