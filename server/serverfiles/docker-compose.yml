@@ -47,4 +47,4 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./www:/usr/share/nginx/html
+      - /ConnectedMB/server/serverfiles/www:/usr/share/nginx/html
