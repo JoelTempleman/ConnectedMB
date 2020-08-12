@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/sh
 set -x #echo on
 
 # Script used to install Git Hub repo into the correct areas on the server
