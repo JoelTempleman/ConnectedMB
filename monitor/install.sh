@@ -27,7 +27,7 @@ uci set system.@system[0].ttylogin="1" && uci commit system
 # block detect | uci import fstab && uci set fstab.@mount[-1].enabled='1' && uci commit fstab && uci set fstab.@global[0].check_fs='1' && uci commit fstab && uci commit
 
 # Copy down project files
-wget -r --no-parent -nH http://$IP_Address/packages/monitor/ -P /tmp
+wget -r --no-parent -nH http://$IP_Address/packages/ -P /tmp
 
 # Launch the first copy
 chmod +x /tmp/packages/monitor/scripts/firstcopy
