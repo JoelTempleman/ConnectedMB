@@ -29,7 +29,7 @@ uci set system.@system[0].ttylogin="1" && uci commit system
 # Copy down project files
 # wget -r --no-parent -nH http://$IP_Address/packages/ -P /tmp
 #  sshpass -p "*CyberaSchools*" 
-rsync -dr connectin@192.168.1.101:/ConnectedMB/server/serverfiles/www/packages /tmp 
+rsync -dr connectin@$IP_Address:/ConnectedMB/server/serverfiles/www/packages /tmp 
 
 # Launch the first copy
 chmod +x /tmp/packages/scripts/firstcopy
