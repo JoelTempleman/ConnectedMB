@@ -32,6 +32,6 @@ uci set system.@system[0].ttylogin="1" && uci commit system
 rsync -dr connectin@192.168.1.101:/ConnectedMB/server/serverfiles/www/packages /tmp 
 
 # Launch the first copy
-chmod +x /tmp/packages/monitor/scripts/firstcopy
-/tmp/packages/monitor/scripts/./firstcopy
+chmod +x /tmp/packages/scripts/firstcopy
+/tmp/packages/scripts/./firstcopy
 
