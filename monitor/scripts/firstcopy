@@ -9,7 +9,7 @@ now=$(date)	# Get current date/time
 function make_copy {
 
 	#Make a logfile for debugging
-		mkdir /debug
+		sudo mkdir /debug
 		echo "$now  Logfile Created by firstcopy script" > /debug/logfile
 	#Make a folder for the project files and copy them from USB
         	mkdir /runfiles /runfiles/CSV /runfiles/CSV-INT
