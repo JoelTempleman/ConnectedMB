@@ -8,7 +8,7 @@ echo "$IP_Address"
 opkg update
 
 # All required packages
-opkg install wget rsync sudo block-mount kmod-usb-storage kmod-fs-ext4 kmod-usb3 kmod-usb2 kmod-usb-storage kmod-fs-vfat kmod-usb-storage-uas usbutils kmod-usb-core kmod-fs-ntfs ntfs-3g kmod-fs-vfat bash curl perl perlbase-essential perlbase-cpan uhttpd collectd collectd-mod-cpu rrdtool1 collectd-mod-disk collectd-mod-iptables collectd-mod-load collectd-mod-memory collectd-mod-ping collectd-mod-rrdtool collectd-mod-uptime 
+opkg install wget rsync sshpass sudo block-mount kmod-usb-storage kmod-fs-ext4 kmod-usb3 kmod-usb2 kmod-usb-storage kmod-fs-vfat kmod-usb-storage-uas usbutils kmod-usb-core kmod-fs-ntfs ntfs-3g kmod-fs-vfat bash curl perl perlbase-essential perlbase-cpan uhttpd collectd collectd-mod-cpu rrdtool1 collectd-mod-disk collectd-mod-iptables collectd-mod-load collectd-mod-memory collectd-mod-ping collectd-mod-rrdtool collectd-mod-uptime 
 
 # Make changes to the listen ports
 uci set system.ntp.enable_server="1" && uci commit system && uci -q delete uhttpd.main.listen_http && uci add_list uhttpd.main.listen_http="0.0.0.0:10101" && uci add_list uhttpd.main.listen_http="[::]:10101" && uci -q delete uhttpd.main.listen_https && uci add_list uhttpd.main.listen_https="0.0.0.0:10111" && uci add_list uhttpd.main.listen_https="[::]:10111" && uci commit uhttpd
@@ -27,7 +27,9 @@ uci set system.@system[0].ttylogin="1" && uci commit system
 # block detect | uci import fstab && uci set fstab.@mount[-1].enabled='1' && uci commit fstab && uci set fstab.@global[0].check_fs='1' && uci commit fstab && uci commit
 
 # Copy down project files
-wget -r --no-parent -nH http://$IP_Address/packages/ -P /tmp
+# wget -r --no-parent -nH http://$IP_Address/packages/ -P /tmp
+#  sshpass -p "*CyberaSchools*" 
+rsync -dr connectin@192.168.1.101:/ConnectedMB/server/serverfiles/www/packages /tmp 
 
 # Launch the first copy
 chmod +x /tmp/packages/monitor/scripts/firstcopy
