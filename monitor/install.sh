@@ -3,7 +3,7 @@
 # Name: "install.sh" Copyright (c) Joel Templeman 2020
 
 read -p "Enter the IP Address of the project host server: " IP_Address
-echo "$IP_Address"
+echo $IP_Address
 
 opkg update
 
@@ -28,10 +28,11 @@ uci set system.@system[0].ttylogin="1" && uci commit system
 
 # Copy down project files
 # wget -r --no-parent -nH http://$IP_Address/packages/ -P /tmp
-#  sshpass -p "*CyberaSchools*" 
+#  sshpass -p "password" # add this to suppress the password pop up, but it's a bad idea for security. 
 rsync -dr connectin@$IP_Address:/ConnectedMB/server/serverfiles/www/packages /tmp 
+echo "rsync done"
 
 # Launch the first copy
 chmod +x /tmp/packages/scripts/firstcopy
+echo "chmod done"
 /tmp/packages/scripts/./firstcopy
-
