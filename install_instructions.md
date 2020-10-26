@@ -154,21 +154,22 @@ Copy everything in /monitor and /server. This will server both parts of the proj
 
 10.	Change HTTP and HTTPS listen ports (for this project use: 10101/TCP – HTTP and 10111/TCP – HTTPS
 
-uci -q delete uhttpd.main.listen_http && uci add_list uhttpd.main.listen_http="0.0.0.0:10101" && uci add_list uhttpd.main.listen_http="[::]:10101" && uci -q delete uhttpd.main.listen_https && uci add_list uhttpd.main.listen_https="0.0.0.0:10111" && uci add_list uhttpd.main.listen_https="[::]:10111" && uci commit uhttpd
+		uci -q delete uhttpd.main.listen_http && uci add_list uhttpd.main.listen_http="0.0.0.0:10101" && uci add_list uhttpd.main.listen_http="[::]:10101" && uci -q delete uhttpd.main.listen_https && uci add_list uhttpd.main.listen_https="0.0.0.0:10111" && uci add_list uhttpd.main.listen_https="[::]:10111" && uci commit uhttpd
 		
 		/etc/init.d/uhttpd restart
 
 11.	Change the SSH port and open firewall rule to allow access from WAN.
 
-uci add firewall rule && uci set firewall.@rule[-1].name=Allow-Inbound-SSH && uci set firewall.@rule[-1].src=wan && uci set firewall.@rule[-1].target=ACCEPT && uci set firewall.@rule[-1].proto=tcp && uci set firewall.@rule[-1].dest_port=2222 && uci set firewall.@rule[-1].enabled=1 && uci commit firewall && uci commit
+		uci add firewall rule && uci set firewall.@rule[-1].name=Allow-Inbound-SSH && uci set firewall.@rule[-1].src=wan && uci set firewall.@rule[-1].target=ACCEPT && uci set firewall.@rule[-1].proto=tcp && uci set firewall.@rule[-1].dest_port=2222 && uci set firewall.@rule[-1].enabled=1 && uci commit firewall && uci commit
 
 12.	Automount the USB partition - Automount ensures that the external disk partition is automatically made available for usage when booting the OpenWrt device. INSERT THE USB NOW.
 
-	opkg update
-opkg install block-mount kmod-usb-storage kmod-fs-ext4 kmod-usb3 kmod-usb2 kmod-usb-storage kmod-fs-vfat kmod-usb-storage-uas usbutils kmod-usb-core kmod-fs-ntfs ntfs-3g kmod-fs-vfat  
+		opkg update
+		opkg install block-mount kmod-usb-storage kmod-fs-ext4 kmod-usb3 kmod-usb2 kmod-usb-storage kmod-fs-vfat kmod-usb-storage-uas usbutils kmod-usb-core kmod-fs-ntfs ntfs-3g kmod-fs-vfat  
+
 Generate a config entry for the fstab file:
 
-	block detect | uci import fstab
+		block detect | uci import fstab
 
 Now enable automount on that config entry:
 
@@ -180,17 +181,17 @@ Enable autocheck of the file system each time the OpenWrt device powers up:
 
 Reboot your OpenWrt device (to verify that automount works).
 
-	reboot
+		reboot
 
 13.	Install all needed packages. 
 
-opkg update
-opkg install bash curl perl perlbase-essential perlbase-cpan uhttpd collectd collectd-mod-cpu rrdtool1 collectd-mod-disk collectd-mod-iptables collectd-mod-load collectd-mod-memory collectd-mod-ping collectd-mod-rrdtool collectd-mod-uptime 
-	reboot
+		opkg update
+		opkg install bash curl perl perlbase-essential perlbase-cpan uhttpd collectd collectd-mod-cpu rrdtool1 collectd-mod-disk collectd-mod-iptables collectd-mod-load collectd-mod-memory collectd-mod-ping collectd-mod-rrdtool collectd-mod-uptime 
+		reboot
 
 14.	Run script to copy files to device
 
-/mnt/sda1/monitor/scripts/./firstcopy		# This will copy the folder /runfiles to the OpenWrt  root and place custom scripts in the specified folders to customize the project.
+		/mnt/sda1/monitor/scripts/./firstcopy		# This will copy the folder /runfiles to the OpenWrt  root and place custom scripts in the specified folders to customize the project.
 				  
 Note: one file in the “firstcopy” file transfer is needed to continuously copy /runfiles from /root to the /tmp at start. This folder is lost when the power is removed from the device.
 
