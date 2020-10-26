@@ -140,9 +140,9 @@ Copy everything in /monitor and /server. This will server both parts of the proj
 
 8.	The automated way to install this project. Use the following 3 commands. All the steps are explained below.
 
-wget http://<<Server-IP-Address>>/packages/monitor/install.sh -P /tmp
-chmod +x /tmp/install.sh
-/tmp/./install.sh 
+		wget http://<<Server-IP-Address>>/packages/monitor/install.sh -P /tmp
+		chmod +x /tmp/install.sh
+		/tmp/./install.sh 
 
 -----------------------------------------------------------------------------------------------------------------------------------------
 
