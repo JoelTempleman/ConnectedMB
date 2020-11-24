@@ -48,3 +48,26 @@ services:
       - "80:80"
     volumes:
       - /ConnectedMB/server/serverfiles/www:/usr/share/nginx/html
+      
+
+version: "2.1"
+services:
+  librespeed:
+    image: ghcr.io/linuxserver/librespeed
+    container_name: librespeed
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - PASSWORD=PASSWORD
+      - CUSTOM_RESULTS=true #optional
+      - DB_TYPE=sqlite #optional
+      - DB_NAME=DB_NAME #optional
+      - DB_HOSTNAME=DB_HOSTNAME #optional
+      - DB_USERNAME=DB_USERNAME #optional
+      - DB_PASSWORD=DB_PASSWORD #optional
+    volumes:
+      - /path/to/appdata/config:/config
+    ports:
+      - 8081:8081
+    restart: unless-stopped
