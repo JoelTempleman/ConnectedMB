@@ -45,7 +45,7 @@ c)	When prompted, make the username: “connectin”. This will make the file pa
 d)	Reboot and login. Note: There will be a bunch of information displayed. You should see the current IP address. 
 	Write that down so you can SSH into it later.
 	
-	Type: 	sudo apt update && sudo upgrade -y
+	Type: 	sudo apt update && sudo apt upgrade -y
 		
 e) 	Install SSH Server:
 
